@@ -1,5 +1,7 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
+import { Filter } from "../infrastructure/interfaces"
+import { URLSearchParams } from "node:url";
 
 dotenv.config();
 
@@ -39,7 +41,33 @@ class DataBase {
         return items;
     }
 
-    async updateItem(){}
+    async getFilteredItems(collectionName: string, filter: Filter) {
+        const database = client.db(dataBase);
+        const collection = database.collection(collectionName);
+        const items = await collection.find(filter).toArray();
+        return items;
+    }
+
+    async addItem(collectionName: string, item: Filter) {
+        const database = client.db(dataBase);
+        const collection = database.collection(collectionName);
+        const result = await collection.insertOne(item);
+        return result;
+    }
+
+    async deleteItem(collectionName: string, filter: Filter) {
+        const database = client.db(dataBase);
+        const collection = database.collection(collectionName);
+        const result = await collection.deleteOne(filter);
+        return result;
+    }
+
+    async updateItem(collectionName: string, filter: Filter, update: URLSearchParams) {
+        const database = client.db(dataBase);
+        const collection = database.collection(collectionName);
+        const result = await collection.updateOne(filter, { $set: update });
+        return result;
+    }
 
 }
 
