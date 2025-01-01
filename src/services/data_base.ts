@@ -1,7 +1,6 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 import dotenv from "dotenv";
-import { Filter } from "../infrastructure/interfaces"
-import { URLSearchParams } from "node:url";
+import { Filter, User } from "../infrastructure/interfaces"
 
 dotenv.config();
 
@@ -62,7 +61,7 @@ class DataBase {
         return result;
     }
 
-    async updateItem(collectionName: string, filter: Filter, update: URLSearchParams) {
+    async updateItem(collectionName: string, filter: Filter, update: User) {
         const database = client.db(dataBase);
         const collection = database.collection(collectionName);
         const result = await collection.updateOne(filter, { $set: update });
