@@ -12,13 +12,17 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Hello world!');
 });
 
-app.get('/data', async (req: Request, res: Response) => {
+app.get('/users', async (req: Request, res: Response) => {
   try {
     const response = await db.getAllItems('users');
     res.send(response);
   } catch (error) {
     res.status(500).send({ error: 'Failed to fetch data' });
   }
+});
+
+app.get('/data', (req: Request, res: Response) => {
+  res.send('Hello data');
 });
 
 
