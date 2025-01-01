@@ -6,10 +6,19 @@
       "use": "@vercel/node"
     }
   ],
+
   "routes": [
     {
+      "src": "/users",
+      "dest": "/index.ts"
+    },
+    {
+      "src": "/data",
+      "dest": "/index.ts"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/dist/index.js"
+      "dest": "/index.ts"
     }
   ]
 }
