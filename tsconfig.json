@@ -2,13 +2,13 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "commonjs",
-    "outDir": "./dist",  // Asegúrate de que los archivos compilados estén en dist/
-    "rootDir": "./",     // Raíz del proyecto
+    "outDir": "./dist",
+    "rootDir": "./",
     "strict": true,
     "esModuleInterop": true
   },
   "include": [
-    "index.ts"  // Incluir el archivo principal index.ts
+    "index.ts"
   ],
   "exclude": [
     "node_modules"
