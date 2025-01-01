@@ -39,6 +39,8 @@ class DataBase {
         return items;
     }
 
+    async updateItem(){}
+
 }
 
 const db = new DataBase()
